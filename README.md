@@ -23,18 +23,17 @@ GET http://localhost:8080/blogs
 #### Example Response
 
 ```json
-[
-  {
-    "_id": "5f9f1b9b9b9b9b9b9b9b9b9b",
-    "title": "My first blog",
-    "body": "This is my first blog"
-  },
-  {
-    "_id": "5f9f1b9b9b9b9b9b9b9b9b9b",
-    "title": "My second blog",
-    "body": "This is my second blog"
-  }
-]
+{
+  "success": true,
+  "message": "Blog list successfully fetched",
+  "data": [
+    {
+      "_id": "637bca1592d1c9380e7a0a4b",
+      "title": "greeting",
+      "body": "Hello World!"
+    }
+  ]
+}
 ```
 
 ### GET /blogs/:id
@@ -50,11 +49,15 @@ GET http://localhost:8080/blogs/5f9f1b9b9b9b9b9b9b9b9b9b
 #### Example Response
 
 ```json
-    {
-        "_id": "5f9f1b9b9b9b9b9b9b9b9b9b",
-        "title": "My first blog",
-        "body": "This is my first blog",
-    },
+{
+  "success": true,
+  "message": "Blog detail successfully fetched",
+  "data": {
+    "_id": "637bca1592d1c9380e7a0a4b",
+    "title": "greeting",
+    "body": "Hello World!"
+  }
+}
 ```
 
 ### POST /blogs
@@ -76,5 +79,8 @@ Content-Type: application/json
 #### Example Response
 
 ```json
-true
+{
+  "success": true,
+  "message": "Blog created successfully"
+}
 ```
