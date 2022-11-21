@@ -1,0 +1,23 @@
+version: "3.1"
+services:
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - ./db:/data/db:rw
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      MONGO_URI: mongodb://root:example@mongo:27017/
+      MONGO_DB: deno-mongo
+      PORT: 1993
+    depends_on:
+      - mongo
+    ports:
+      - 1993:1993
