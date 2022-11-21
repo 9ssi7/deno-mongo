@@ -6,18 +6,20 @@ services:
     volumes:
       - ./db:/data/db:rw
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASS}
   server:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - SERVER_PORT=${SERVER_PORT}
     restart: always
     environment:
-      MONGO_URI: mongodb://root:example@mongo:27017/
-      MONGO_DB: deno-mongo
-      PORT: 1993
+      MONGO_URI: mongodb://${MONGODB_USER}:${MONGODB_PASS}@mongo:27017/
+      MONGO_DB: ${MONGODB_DATABASE}
+      SERVER_PORT: ${SERVER_PORT}
     depends_on:
       - mongo
     ports:
-      - 1993:1993
+      - ${SERVER_PORT}:${SERVER_PORT}
