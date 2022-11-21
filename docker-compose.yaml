@@ -18,7 +18,7 @@ services:
     environment:
       MONGO_URI: mongodb://${MONGODB_USER}:${MONGODB_PASS}@mongo:27017/
       MONGO_DB: ${MONGODB_DATABASE}
-      PORT: ${SERVER_PORT}
+      SERVER_PORT: ${SERVER_PORT}
     depends_on:
       - mongo
     ports:
