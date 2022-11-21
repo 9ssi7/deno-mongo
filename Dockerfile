@@ -1,6 +1,8 @@
 FROM denoland/deno:alpine
 
-EXPOSE 1993
+ARG SERVER_PORT=8080
+
+EXPOSE $SERVER_PORT
 
 WORKDIR /app
 USER deno
