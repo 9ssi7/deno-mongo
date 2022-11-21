@@ -16,7 +16,7 @@ services:
     environment:
       MONGO_URI: mongodb://root:example@mongo:27017/
       MONGO_DB: deno-mongo
-      PORT: 1993
+      SERVER_PORT: 1993
     depends_on:
       - mongo
     ports:
